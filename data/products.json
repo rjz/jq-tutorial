@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Table",
+    "price": 270.00
+  },
+  {
+    "name": "Chair",
+    "price": 150.00
+  },
+  {
+    "name": "Desk",
+    "price": 75.00
+  },
+  {
+    "name": "Sofa",
+    "price": 200.00
+  },
+  {
+    "name": "Bookshelf",
+    "price": 40.00
+  }
+]

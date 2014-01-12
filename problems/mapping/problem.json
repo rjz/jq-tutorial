@@ -1,0 +1,7 @@
+[
+  {
+    "prompt": "Return an array containing names of all products",
+    "dataset": "products",
+    "solution": "map(.name)"
+  }
+]

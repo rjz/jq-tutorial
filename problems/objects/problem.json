@@ -1,0 +1,23 @@
+[
+  {
+    "prompt": "Create a new object containing just the \"name\" field",
+    "dataset": "product",
+    "solution": "{ name }"
+  },
+  {
+    "prompt": "Construct an array containing the product's name",
+    "dataset": "product",
+    "solution": "[.name]"
+  },
+  {
+    "prompt": "Extend the product with { color: \"red\" }",
+    "dataset": "product",
+    "solution": "{ price, name, color: \"red\"}"
+  },
+  {
+    "prompt": "Construct a new object with the 'name' field renamed to 'title'",
+    "dataset": "product",
+    "solution": "{ price, title: .name}"
+  }
+]
+

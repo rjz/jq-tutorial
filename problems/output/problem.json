@@ -1,0 +1,7 @@
+[
+  {
+    "prompt": "Convert products array to a CSV with columns for \"name\" and \"price\"",
+    "dataset": "products",
+    "solution": ".[] | [.name, .price] | @csv"
+  }
+]

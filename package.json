@@ -1,0 +1,31 @@
+{
+  "name": "jq-tutorial",
+  "version": "0.0.0",
+  "description": "Exercises for learning jq",
+  "main": "index.js",
+  "preferGlobal": true,
+  "bin": {
+    "jq-tutorial": "./bin/jq-tutorial"
+  },
+  "dependencies": {
+    "async": "~0.2.9",
+    "lodash": "~2.4.1",
+    "colors": "~0.6.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:rjz/jq-tutorial.git"
+  },
+  "keywords": [
+    "jq",
+    "json",
+    "tutorial",
+    "exercises"
+  ],
+  "bugs": {
+    "url": "https://github.com/rjz/jq-tutorial/issues"
+  },
+  "author": "@rjzaworski",
+  "license": "MIT"
+}
+

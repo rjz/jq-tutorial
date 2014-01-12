@@ -1,0 +1,18 @@
+[
+  {
+    "prompt": "Return all items named desk",
+    "dataset": "products",
+    "solution": ".[] | select(.name==\"Desk\")"
+  },
+  {
+    "prompt": "Return an array containing all products except 'Desk'",
+    "dataset": "products",
+    "solution": "[.[] | select(.name != \"Desk\")]"
+  },
+  {
+    "prompt": "Return an array containing all products costing more than 100.00",
+    "dataset": "products",
+    "solution": "[.[] | select(.price > 100)]"
+  }
+]
+
