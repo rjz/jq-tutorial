@@ -2,7 +2,7 @@
 
 [jq][0] is an awesome command-line utility for processing JSON data. It has an
 [excellent manual][1] already, but--since there's no substitute for practice--
-these exercises are an unofficial supplement for new users exploring its syntax
+this tutorial provides an unofficial supplement for new users exploring its syntax
 and applications.
 
 ### Running tutorial
