@@ -8,14 +8,18 @@ var fs = require('fs'),
 
 function run (datafile, str, callback) {
   exec('jq \'' + str + '\' ' + datafile, function (err, stdout, stderr) {
-    if (stderr) console.error(stderr);
-    callback(err, stdout);
+    if (stderr) {
+      callback(null, stderr);
+    }
+    else {
+      callback(null, stdout);
+    }
   });
 }
 
 function clearscreen () {
   // ref: http://stackoverflow.com/questions/8813142
-  process.stdout.write('\u001B[2J\u001B[0;0f')
+  process.stdout.write('\u001B[2J\u001B[0;0f');
 }
 
 function divider () {
@@ -39,12 +43,21 @@ function runOne (problem, callback) {
     rl.prompt();
   };
 
+  var helpMessage = function () {
+    writeAndPrompt([
+      'Enter your answer or one of the following:',
+      '  * help?   show this help message',
+      '  * prompt? show the original challenge prompt',
+      '  * data?   show the challenge data set'
+    ].join('\n'));
+  };
+
   var problemPrompt = function () {
     writeAndPrompt([
       'Given: '.bold.white + '   \'' + problem.dataset + '\' (type "data?" to view)',
       'Challenge: '.bold.white + problem.prompt + '\n'
     ].join('\n'));
-  }
+  };
 
   divider();
   problemPrompt();
@@ -52,9 +65,9 @@ function runOne (problem, callback) {
   rl.on('line', function (answer) {
     switch (answer) {
       case '?':
-      case 'help?':    writeAndPrompt('...');   break;
-      case 'prompt?':  problemPrompt();         break;
-      case 'data?':    writeAndPrompt(dataset); break;
+      case 'help?':   helpMessage();           break;
+      case 'prompt?': problemPrompt();         break;
+      case 'data?':   writeAndPrompt(dataset); break;
       default:
         async.parallel({
           expected: _.partial(run, datafile, solution),
@@ -76,7 +89,7 @@ function runOne (problem, callback) {
 
             process.stdout.write('\nYour answer:\n');
             process.stdout.write(results.actual.yellow + '\n');
-            rl.prompt()
+            rl.prompt();
           }
         });
     }
@@ -84,6 +97,7 @@ function runOne (problem, callback) {
 }
 
 function show (problem, callback) {
+
   async.map([
     path.resolve(__dirname, 'problems', problem, 'README.md'),
     path.resolve(__dirname, 'problems', problem, 'problem.json')
@@ -95,7 +109,7 @@ function show (problem, callback) {
 
     // Print README
     process.stdout.write(results[0]);
-    process.stdout.write('type "data?" to see dataset or "help?" for more options')
+    process.stdout.write('type "data?" to see dataset or "help?" for more options');
 
     // do problem
     async.mapSeries(problems, runOne, callback);
@@ -103,9 +117,29 @@ function show (problem, callback) {
 }
 
 fs.readFile(path.resolve(__dirname, 'menu.json'), function (err, result) {
-  var problems = JSON.parse(result);
-  async.mapSeries(problems, show, function (err, result) {
-    console.log('Done!');
-  });
+  var lesson = process.argv[process.argv.length -1],
+      problems = JSON.parse(result);
+
+  var success = function (lesson) {
+    process.stdout.write([
+      '\u2605'.yellow + ' "' + lesson + '" completed with a gold star!',
+    ].join('\n') + '\n\n');
+  };
+
+  var usage = function () {
+    process.stdout.write([
+      'Run jq-tutorial with one of the following:'
+    ].concat(problems).join('\n  * ') + '\n\n');
+  };
+
+  if (problems.indexOf(lesson) == -1) {
+    usage();
+  }
+  else {
+    show(lesson, function (err, result) {
+      if (err) throw err;
+      success(lesson);
+    });
+  }
 });
 

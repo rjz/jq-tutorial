@@ -1,25 +1,33 @@
 # jq tutorial
 
-Exercises for learning [jq][0]
+[jq][0] is an awesome command-line utility for processing JSON data. It has an
+[excellent manual][1] already, but--since there's no substitute for practice--
+these exercises are an unofficial supplement for new users exploring its syntax
+and applications.
 
-### Setup
+### Running tutorial
 
-[Download and install][1] jq, then grab a copy of this tutorial:
+[Download and install][2] jq, then grab a copy of this tutorial:
 
     $ npm install -g jq-tutorial
     $ jq-tutorial
 
+Run individual lessons by name:
+
+    $ jq-tutorial pick
+
 ### Attribution
 
-  * jq copyright (C) 2012 [Stephen Dolan][2]
-  * heavy inspiration drawn from from Rod Vagg's [workshopper][3]
+  * jq copyright (C) 2012 [Stephen Dolan][3]
+  * heavy inspiration from from Rod Vagg's [workshopper][4]
 
 ### License
 
 MIT
 
 [0]: http://stedolan.github.io/jq "jq"
-[1]: http://stedolan.github.io/jq/download/ "Download jq"
-[2]: https://github.com/stedolan
-[3]: https://github.com/rvagg/workshopper "Workshopper"
+[1]: http://stedolan.github.io/jq/manual "jq Manual"
+[2]: http://stedolan.github.io/jq/download/ "Download jq"
+[3]: https://github.com/stedolan
+[4]: https://github.com/rvagg/workshopper "Workshopper"
 

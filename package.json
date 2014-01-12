@@ -7,6 +7,9 @@
   "bin": {
     "jq-tutorial": "./bin/jq-tutorial"
   },
+  "scripts": {
+    "test": "./node_modules/jshint/bin/jshint *.js"
+  },
   "dependencies": {
     "async": "~0.2.9",
     "lodash": "~2.4.1",
@@ -26,5 +29,8 @@
     "url": "https://github.com/rjz/jq-tutorial/issues"
   },
   "author": "@rjzaworski",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "jshint": "~2.4.1"
+  }
 }
