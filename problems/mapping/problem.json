@@ -3,5 +3,10 @@
     "prompt": "Return an array containing names of all products",
     "dataset": "products",
     "solution": "map(.name)"
+  },
+  {
+    "prompt": "Return all products, but double their prices",
+    "dataset": "products",
+    "solution": "map({ name, (price: .price * 2) })"
   }
 ]
