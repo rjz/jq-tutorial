@@ -3,5 +3,6 @@
   "objects",
   "mapping",
   "filtering",
-  "output"
+  "output",
+  "reduce"
 ]

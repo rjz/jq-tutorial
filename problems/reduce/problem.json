@@ -1,0 +1,7 @@
+[
+  {
+    "prompt": "Use reduce to sum all product prices:",
+    "dataset": "products",
+    "solution": "reduce .[] as $item (0; . + $item.price)"
+  }
+]
