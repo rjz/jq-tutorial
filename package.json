@@ -28,7 +28,12 @@
   "bugs": {
     "url": "https://github.com/rjz/jq-tutorial/issues"
   },
-  "author": "@rjzaworski",
+  "author": "RJ Zaworski <rj@rjzaworski.com> (http://rjzaworski.com)",
+  "contributors": [
+    {
+      "name": "CheshireSwift"
+    }
+  ],
   "license": "MIT",
   "devDependencies": {
     "jshint": "~2.4.1"
