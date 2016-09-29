@@ -8,12 +8,8 @@ var fs = require('fs'),
 
 function run (datafile, str, callback) {
   exec('jq \'' + str + '\' ' + datafile, function (err, stdout, stderr) {
-    if (stderr) {
-      callback(null, stderr);
-    }
-    else {
-      callback(null, stdout);
-    }
+    var errorMessage = err && err.message;
+    callback(errorMessage || stderr, stdout);
   });
 }
 
@@ -70,8 +66,8 @@ function runOne (problem, callback) {
       case 'data?':   writeAndPrompt(dataset); break;
       default:
         async.parallel({
-          expected: _.partial(run, datafile, solution),
-          actual: _.partial(run, datafile, answer)
+          actual: _.partial(run, datafile, answer),
+          expected: _.partial(run, datafile, solution)
         }, function (err, results) {
 
           if (err) {
