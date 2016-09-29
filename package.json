@@ -1,6 +1,6 @@
 {
   "name": "jq-tutorial",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Exercises for learning jq",
   "main": "index.js",
   "preferGlobal": true,
