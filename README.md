@@ -16,6 +16,11 @@ Run individual lessons by name:
 
     $ jq-tutorial pick
 
+#### Running in docker
+
+    $ docker build -t jq-tutorial .
+    $ docker run -ti jq-tutorial
+
 ### Attribution
 
   * jq copyright (C) 2012 [Stephen Dolan][3]
