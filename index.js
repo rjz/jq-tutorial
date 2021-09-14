@@ -77,6 +77,8 @@ function runOne (problem, callback) {
 
           if (_.isEqual(results.expected, results.actual)) {
             rl.close();
+            process.stdout.write('\nYour answer was correct:\n');
+            process.stdout.write(results.actual.green + '\n');
             callback(null);
           }
           else {
