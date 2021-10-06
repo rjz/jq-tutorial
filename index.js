@@ -22,6 +22,56 @@ function divider () {
   process.stdout.write('\n\n--------------------------------\n\n');
 }
 
+function isEqual(a, b) {
+  // If string representation is equal then return true.
+  if (_.isEqual(a, b)) {
+    return true;
+  }
+
+  // If a and b are convertable to objects, return comparison of objects.
+  try {
+    return _.isEqual(JSON.parse(a), JSON.parse(b));
+  } catch {}
+  // Otherwise prepare functions for comparison of streams.
+
+  // Given opening and closing chars of items (curly brackets for objects,
+  // square brackets for arrays) return function that converts string to
+  // array of strings that are convertable to json.
+  var to_stream = function(opening_char, closing_char){
+    var separator = closing_char + '\n' + opening_char;
+    return ((str) =>
+        str.slice(1, -2).split(separator).map(x => opening_char + x + closing_char)
+    );
+  }
+  // Create function converting string to array of strings holding objects.
+  var to_object_stream = to_stream('{', '}');
+  // Create function converting string to array of strings holding arrays.
+  var to_array_stream = to_stream('[', ']');
+
+  // Given function from above, return function that compares items one by one.
+  var compare_as_stream = (streamer =>
+      (_a, _b) => _.zip(streamer(a), streamer(b))
+                   .map((tuple) =>
+                       _.isEqual(JSON.parse(tuple[0]), JSON.parse(tuple[1]))
+                   )
+  )
+
+  // Try to convert string to stream of objects. If the conversion succeeds,
+  // return result of comparison.
+  try {
+    return compare_as_stream(to_object_stream)(a,b).every((x) => x == true);
+  } catch {}
+
+  // Try to convert string to stream of arrays. If the conversion succeeds,
+  // return result of comparison.
+  try {
+    return compare_as_stream(to_array_stream)(a, b).every((x) => x == true);
+  } catch {}
+
+  // If all attempts failed, suppose a and b are not equal
+  return false;
+}
+
 function runOne (problem, callback) {
 
   var datafile = path.resolve(__dirname, 'data/' + problem.dataset + '.json');
@@ -74,8 +124,7 @@ function runOne (problem, callback) {
             process.stderr.write(err.red);
             return rl.prompt();
           }
-
-          if (_.isEqual(results.expected, results.actual)) {
+          if (isEqual(results.expected, results.actual)) {
             rl.close();
             process.stdout.write('\nYour answer was correct:\n');
             process.stdout.write(results.actual.green + '\n');
