@@ -13,7 +13,7 @@
   "dependencies": {
     "async": "~0.2.9",
     "colors": "~0.6.2",
-    "lodash": "^4.17.15"
+    "lodash": "^4.17.21"
   },
   "repository": {
     "type": "git",
@@ -36,6 +36,6 @@
   ],
   "license": "MIT",
   "devDependencies": {
-    "jshint": "^2.10.2"
+    "jshint": "^2.13.1"
   }
 }
