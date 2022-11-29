@@ -1,0 +1,7 @@
+[
+  {
+    "prompt": "Return an array with all '\"ab\" subsequences removed (ignore case):",
+    "dataset": "regexp",
+    "solution": "map(gsub(\"ab\"; \"\"; \"i\"))"
+  }
+]

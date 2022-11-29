@@ -4,5 +4,6 @@
   "mapping",
   "filtering",
   "output",
-  "reduce"
+  "reduce",
+  "regexp"
 ]
