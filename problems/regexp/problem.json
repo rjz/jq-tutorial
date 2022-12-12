@@ -1,0 +1,12 @@
+[
+  {
+    "prompt": "Return an array with all '\"ab\" subsequences removed (ignore case):",
+    "dataset": "regexp",
+    "solution": "map(gsub(\"ab\"; \"\"; \"i\"))"
+  },
+  {
+    "prompt": "Return an array of objects { \"first\": \"<first letter>\", \"remaining\": \"<the rest of the string>\"}:",
+    "dataset": "regexp",
+    "solution": "[ .[] | capture(\"(?<first>.)(?<remaining>.+)\"; \"i\") ]"
+  }
+]
