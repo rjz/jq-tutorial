@@ -36,7 +36,7 @@
   ],
   "license": "MIT",
   "devDependencies": {
-    "jshint": "^2.13.1",
+    "jshint": "^2.13.6",
     "prettier": "^2.4.1"
   }
 }
