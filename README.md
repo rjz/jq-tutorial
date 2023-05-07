@@ -23,7 +23,7 @@ Run individual lessons by name:
 
 ### Attribution
 
-  * jq copyright (C) 2012 [Stephen Dolan][3]
+  * jq copyright (C) 2012-2023 [Stephen Dolan][3]
   * heavy inspiration from Rod Vagg's [workshopper][4]
 
 ### License
