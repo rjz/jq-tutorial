@@ -24,7 +24,7 @@ Run individual lessons by name:
 ### Attribution
 
   * jq copyright (C) 2012 [Stephen Dolan][3]
-  * heavy inspiration from from Rod Vagg's [workshopper][4]
+  * heavy inspiration from Rod Vagg's [workshopper][4]
 
 ### License
 
