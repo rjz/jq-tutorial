@@ -1,4 +1,4 @@
-Constructing objects
+Working with objects
 ========================================
 
 `jq` can also be used to transform data. For instance, to construct a
@@ -18,4 +18,10 @@ it will be copied into the output object:
 
     $ echo '{"foo": { "bar": "a value" }}' \
       | jq '{ foo, why: "demonstration copy" }'
+
+`jq` can also transform object into a list of `key` and `value` pairs
+with `to_entries` function:
+
+    $ echo '{"banana": "yellow", "blueberry": "blue"}' \
+      | jq to_entries
 

@@ -18,6 +18,11 @@
     "prompt": "Construct a new object with the 'name' field renamed to 'title'",
     "dataset": "product",
     "solution": "{ price, title: .name}"
+  },
+  {
+    "prompt": "Construct a list of all properties (keys) of a product",
+    "dataset": "product",
+    "solution": "to_entries | [.[].key]"
   }
 ]
 
